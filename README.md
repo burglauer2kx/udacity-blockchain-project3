@@ -1,14 +1,25 @@
-- Specify the Truffle version and OpenZeppelin version used in the project.
+## UML ##
+
+![Activity diagram](/activity.drawio.png)
+![Class diagram](/class.drawio.png)
+![Sequence diagram](/sequence.png)
+![State diagram](/state.drawio.png)
+
+## Libraries ##
+
+- no additional libraries used
+
+## IPFS ##
+
+- IPFS is not used
+
+## Truffle ##
 
 truffle version
-Truffle v5.4.11 (core: 5.4.11)
-Solidity v0.5.16 (solc-js)
-Node v14.17.6
-Web3.js v1.5.2
+Truffle v4.1.14 (core: 4.1.14)
+Solidity v0.4.24 (solc-js)
 
-npm view openzeppelin-solidity version
-4.3.2
+## Rinkeby ##
 
-- Your ERC-721 Token Name: My very own star notary token
-- Your ERC-721 Token Symbol: MVOSNT
-- Your “Token Address” on the Rinkeby Network: https://rinkeby.etherscan.io/address/0x6d90a75f8F9cbace5E3b350D7B1d1FAA29585E53
+- Supply chain contract: https://rinkeby.etherscan.io/address/0xff8868d81a7432905af688ade1ddcadbf43116ef
+- details in migration-rinkeby.txt
