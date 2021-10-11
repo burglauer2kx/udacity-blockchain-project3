@@ -1,8 +1,18 @@
 ## UML ##
 
+### Activity diagram ###
+
 ![Activity diagram](/activity.drawio.png)
+
+### Class diagram ###
+
 ![Class diagram](/class.drawio.png)
+
+### Sequence diagram ###
 ![Sequence diagram](/sequence.png)
+
+### State diagram ###
+
 ![State diagram](/state.drawio.png)
 
 ## Libraries ##
