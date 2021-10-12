@@ -153,6 +153,8 @@ contract('SupplyChain', function(accounts) {
     it("Testing smart contract function buyItem() that allows a distributor to buy coffee", async() => {
         const supplyChain = await SupplyChain.deployed()
         
+		await supplyChain.addDistributor(distributorID);
+		
         // Declare and Initialize a variable for event
         var eventEmitted = false;
         
@@ -205,17 +207,18 @@ contract('SupplyChain', function(accounts) {
     it("Testing smart contract function receiveItem() that allows a retailer to mark coffee received", async() => {
         const supplyChain = await SupplyChain.deployed()
         
+		await supplyChain.addRetailer(retailerID);
+		
         // Declare and Initialize a variable for event
         var eventEmitted = false;
         
         // Watch the emitted event Received()
-        var event = supplyChain.Received()
+        var event = supplyChain.Received();
         await event.watch((err, res) => {
-            eventEmitted = true
+            eventEmitted = true;
         });
 
         // Mark an item as Sold by calling function receiveItem()
-		await supplyChain.addRetailer(retailerID);
         await supplyChain.receiveItem(upc, { from: retailerID });
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
@@ -234,17 +237,19 @@ contract('SupplyChain', function(accounts) {
     it("Testing smart contract function purchaseItem() that allows a consumer to purchase coffee", async() => {
         const supplyChain = await SupplyChain.deployed()
         
+		await supplyChain.addConsumer(consumerID);
+		
         // Declare and Initialize a variable for event
         var eventEmitted = false;
         
         // Watch the emitted event Purchased()
-        var event = supplyChain.Purchased()
+        var event = supplyChain.Purchased();
         await event.watch((err, res) => {
-            eventEmitted = true
+			//console.log("Event received: %o", res);
+            eventEmitted = true;
         });
 
         // Mark an item as Purchased by calling function purchaseItem()
-		await supplyChain.addConsumer(consumerID);
 		await supplyChain.purchaseItem(upc, { from: consumerID });
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()

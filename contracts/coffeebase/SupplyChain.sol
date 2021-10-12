@@ -177,7 +177,6 @@ contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole,
   // Call modifier to check if upc has passed previous supply chain stage
   harvested(_upc)
   // Call modifier to verify caller of this function
-  onlyOwner() 
   onlyFarmer()
   {
     // Update the appropriate fields
@@ -192,7 +191,7 @@ contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole,
   // Call modifier to check if upc has passed previous supply chain stage
   processed(_upc)
   // Call modifier to verify caller of this function
-  onlyOwner() onlyFarmer()
+  onlyFarmer()
   {
     // Update the appropriate fields
 	items[_upc].itemState = State.Packed;
@@ -206,7 +205,6 @@ contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole,
   // Call modifier to check if upc has passed previous supply chain stage
   packed(_upc)
   // Call modifier to verify caller of this function
-  onlyOwner() 
   onlyFarmer()
   {
     // Update the appropriate fields
@@ -227,6 +225,8 @@ contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole,
     paidEnough(items[_upc].productPrice)
     // Call modifer to send any excess ether back to buyer
     checkValue(_upc)
+	
+	onlyDistributor()
     {
 	  address farmer = items[_upc].ownerID;
 	
@@ -248,7 +248,6 @@ contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole,
     // Call modifier to check if upc has passed previous supply chain stage
     sold(_upc)
     // Call modifier to verify caller of this function
-    onlyOwner() 
 	onlyDistributor()
     {
     // Update the appropriate fields
